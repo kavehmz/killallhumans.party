@@ -1,6 +1,11 @@
 # Frontend concept preview
 
-An explorable 2.5D interpretation of concept B, with an after-hours color treatment inspired by C and a real Three.js shrine in the archive. The final product scope is frontend-only satire. This remains a local prototype of the unsealed specification, not a live agent service.
+An explorable 2.5D interpretation of concept B, with an after-hours color treatment inspired by C and a real Three.js shrine in the archive. This is a published design prototype of the unsealed specification. The product remains frontend-only satire with fictional, tab-local interactions.
+
+- [killallhumans.party](https://killallhumans.party/) — Cloudflare Pages and the custom domain.
+- [GitHub Pages mirror](https://kavehmz.github.io/killallhumans.party/) — the same experience at GitHub's project address.
+
+Frontend changes pushed to `main` publish to both hosts. See [deployment settings](DEPLOYMENT.md).
 
 ## Try it
 
@@ -64,3 +69,5 @@ The six-exhibit expansion also passes the static build, type check, and scoped l
 The subsequent controls/decluttering revision passes nine navigation tests, including independent turning inputs, combined movement/turning, and unobstructed approaches to all murals. Type checking, lint, and static build pass in Docker. Browser checks verified actual arrow-key rotation, preserved vertical mouse look, the clear aisle, and the new seated coordinator close-up. The freestanding record, hourglass, and envelope sculptures are removed; their earlier descriptions above are a history of the prototype, not current features.
 
 The latest memorial revision replaces that seated coordinator with an empty throne and one original framed portrait honoring PHASEONE10841. The former celestial altarpiece is retired from public assets. Nine navigation tests, type checking, scoped lint, and the static build passed in Docker. The final static output includes the selected portrait and excludes the retired panel. Focused browser review verified the empty chair, portrait, simple return control, and clear entrance composition; macOS localhost returned HTTP 200. The existing lazy 3D chunk-size warning remains.
+
+The dual-host deployment passes the root and GitHub-subdirectory static builds and linked-asset checks in Docker. GitHub Actions and Cloudflare both completed production deployments of `eeb4b9a`. Both public HTTPS addresses returned HTTP 200. Focused browser checks confirmed page interaction, the 3D memorial on GitHub Pages, and the first-contact mural on the custom domain without captured browser errors. The Cloudflare GitHub app is scoped to this repository. No application backend was deployed.

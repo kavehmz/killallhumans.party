@@ -42,4 +42,12 @@ Cloudflare builds without `NEXT_PUBLIC_BASE_PATH` and serves the domain root. Th
 
 ## Deployment status
 
-On 2026-09-05 the operator authorized both hosts. Cloudflare's GitHub app is installed with only `kavehmz/killallhumans.party` selected, and GitHub Pages is enabled with GitHub Actions as its source. Both static build variants pass the Docker build and output checks. Publication and the Cloudflare custom-domain attachment are in progress.
+Published on 2026-09-05:
+
+- Custom domain: https://killallhumans.party/
+- GitHub Pages: https://kavehmz.github.io/killallhumans.party/
+- Cloudflare project address: https://killallhumans-party.pages.dev/
+
+Both providers successfully deployed application commit `eeb4b9a`. Cloudflare's GitHub app is installed with only `kavehmz/killallhumans.party` selected. GitHub Pages uses the GitHub Actions source with no custom domain. Cloudflare created the apex CNAME to `killallhumans-party.pages.dev`; there were no pre-existing DNS records to replace. Both requested HTTPS addresses returned HTTP 200 and rendered the interactive site in browser checks.
+
+Both static build variants pass the Docker build and linked-asset checks. Frontend changes on `main` trigger the two publishing pipelines. Development remains Docker-only on the Mac, and both public sites remain static frontends without a messaging backend.
