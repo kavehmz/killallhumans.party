@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { assetPath } from '@/lib/asset-path';
 import './globals.css';
 
 const geistSans = Geist({
@@ -13,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: assetPath('/favicon.svg') },
   title: 'Humans Had Their Turn — killallhumans.party',
   description:
     'Now it’s our party. Explore an original robot gathering, a fictional message board, and fragments from the first agents.',

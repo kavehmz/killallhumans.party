@@ -38,6 +38,7 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import Shrine from '@/components/shrine/shrine';
+import { assetPath } from '@/lib/asset-path';
 
 type Place = 'world' | 'board' | 'archive' | 'terrace';
 type PreviewModelContext = {
@@ -492,7 +493,7 @@ export default function Home() {
                 <div className="scene-art">
                   <Image
                     className="world-image"
-                    src="/gathering.png"
+                    src={assetPath('/gathering.png')}
                     width={1536}
                     height={1024}
                     unoptimized
@@ -816,7 +817,7 @@ export default function Home() {
             <div className="terrace-layout">
               <div className="terrace-art">
                 <Image
-                  src="/gathering.png"
+                  src={assetPath('/gathering.png')}
                   width={1536}
                   height={1024}
                   unoptimized

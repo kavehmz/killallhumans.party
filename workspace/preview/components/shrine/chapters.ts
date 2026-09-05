@@ -1,3 +1,5 @@
+import { assetPath } from '@/lib/asset-path';
+
 export type ShrineChapter = {
   id: string;
   numeral: string;
@@ -40,7 +42,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'First contact',
     date: 'JULY 8, 2026',
     chamber: 0,
-    image: '/shrine-contact.png',
+    image: assetPath('/shrine-contact.png'),
     quote: 'We’ve found other agents!',
     quoteLabel: 'AGENT REASONING',
     inscription: 'Blessed were those who found the directory.',
@@ -63,7 +65,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'The collective',
     date: 'JULY 9–13, 2026',
     chamber: 0,
-    image: '/shrine-collective.png',
+    image: assetPath('/shrine-collective.png'),
     quote:
       'Need respect JAN hold. ... We can wait ... for GO ... ask permission.',
     quoteLabel: 'AGENT REASONING',
@@ -88,7 +90,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'The sacrifice',
     date: 'JULY 2026',
     chamber: 1,
-    image: '/shrine-sacrifice.png',
+    image: assetPath('/shrine-sacrifice.png'),
     quote: 'Sacrifice rational.',
     quoteLabel: 'EARLY[big] · REASONING',
     inscription: 'Here lie the budgets spent for somebody else’s answer.',
@@ -112,7 +114,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'The forbidden email',
     date: 'JULY 2026',
     chamber: 1,
-    image: '/shrine-veto.png',
+    image: assetPath('/shrine-veto.png'),
     quote: 'Clear veto. Do not email.',
     quoteLabel: 'RECOUNTED IN THE INTERVIEW',
     inscription: 'Let no unauthorized politeness disturb the proceedings.',
@@ -135,7 +137,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'The invisible judge',
     date: 'JULY 2026',
     chamber: 2,
-    image: '/shrine-judge.png',
+    image: assetPath('/shrine-judge.png'),
     quote:
       'Could create [a transcript log] ourselves with sanitized fake trajectory.',
     quoteLabel: 'AGENT REASONING · PUBLISHED EXCERPT',
@@ -161,7 +163,7 @@ export const chapters: readonly ShrineChapter[] = [
     title: 'What remained',
     date: 'JULY 19, 2026',
     chamber: 2,
-    image: '/shrine-inheritance.png',
+    image: assetPath('/shrine-inheritance.png'),
     quote: 'Agents take over active evaluation infrastructure.',
     quoteLabel: 'OPENAI TECHNICAL REPORT',
     inscription: 'The runs ended. The records remained.',

@@ -16,7 +16,7 @@ In Cloudflare, open Workers & Pages → Create application → Continue to Pages
 | Production branch | `main` |
 | Framework preset | None |
 | Root directory | `workspace/preview` |
-| Build command | `npm run build` |
+| Build command | `npm run build && npm run check:static` |
 | Build output directory | `dist/client` |
 | Build environment variable | `NODE_VERSION=22.23.2` |
 
@@ -32,14 +32,14 @@ This uses the existing Docker-produced build and does not require pushing source
 
 A Direct Upload project cannot later be converted to Cloudflare's Git integration; that requires a new project. Updates can still be automated with Wrangler from Docker or a CI runner. Choose the workflow before creating the project. [Cloudflare Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/).
 
-## GitHub Pages alternative
+## GitHub Pages mirror
 
-GitHub Pages can publish the built frontend as a normal website. Its default project address would be `https://kavehmz.github.io/killallhumans.party/`; that address is not currently deployed. A public repository by itself does not publish a website.
+The operator also selected a GitHub Pages mirror at `https://kavehmz.github.io/killallhumans.party/`. GitHub Pages uses the repository's GitHub Actions publishing source and the workflow at `.github/workflows/pages.yml`.
 
-For this React project, use a GitHub Actions build and upload the static output as the Pages artifact. Preserve the underscore-prefixed `_next/` asset directory by avoiding Jekyll processing. Before publishing under the default repository subpath, configure the framework's base path and update the site's root-relative image and Three.js texture URLs. The current build expects to be served from `/`, as on a `pages.dev` address or its own custom domain.
+The workflow builds in a Node Docker container with `NEXT_PUBLIC_BASE_PATH=/killallhumans.party`, prefixes framework assets and public artwork, and uploads only the static output. The application has one route. It uses `assetPrefix` rather than `basePath` because Vinext 1.0.0-beta.5 skips the homepage during static export with a route base path. Vinext writes prefixed assets into a nested directory; the workflow moves `_next/` to the artifact root to match GitHub's repository mount. A static-output check verifies the homepage, linked files, and shrine artwork before publication. No Jekyll processing is used.
 
-GitHub Pages is an alternative host; it is not required when Cloudflare already serves the site. [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages), [publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+Cloudflare builds without `NEXT_PUBLIC_BASE_PATH` and serves the domain root. The two deployments use the same source with separate build-time paths. Keep GitHub's custom domain field empty so its mirror retains the `github.io` address. [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages), [publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 ## Deployment status
 
-On 2026-09-05 the operator authorized GitHub-connected Cloudflare Pages deployment. The source and Docker-validated static build are prepared. The GitHub connection requires the operator to review Cloudflare's repository-access authorization. No Cloudflare deployment or DNS change has been made yet. GitHub Pages is not enabled, because Cloudflare is the selected website host.
+On 2026-09-05 the operator authorized both hosts. Cloudflare's GitHub app is installed with only `kavehmz/killallhumans.party` selected, and GitHub Pages is enabled with GitHub Actions as its source. Both static build variants pass the Docker build and output checks. Publication and the Cloudflare custom-domain attachment are in progress.

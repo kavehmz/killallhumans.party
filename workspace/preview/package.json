@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "check:static": "node scripts/check-static.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "test:navigation": "node --experimental-strip-types --test components/shrine/navigation.test.mjs",

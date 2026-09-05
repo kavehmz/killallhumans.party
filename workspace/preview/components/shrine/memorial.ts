@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { assetPath } from '@/lib/asset-path';
 
 type SurfaceTools = {
   scene: THREE.Scene;
@@ -88,7 +89,7 @@ export function createMemorial(tools: SurfaceTools) {
   const portrait = mesh(geometry, surface, root);
   portrait.position.z = -2.04;
   portrait.castShadow = false;
-  loadTexture('/coordinator-memorial.png', (texture) => {
+  loadTexture(assetPath('/coordinator-memorial.png'), (texture) => {
     surface.map = texture;
     surface.emissiveMap = texture;
     surface.needsUpdate = true;
