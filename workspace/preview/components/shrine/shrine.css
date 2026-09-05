@@ -1,0 +1,978 @@
+.archive-panel {
+  max-width: 1600px;
+}
+.shrine {
+  --shrine-gold: #d9b96f;
+  --shrine-ink: #1b362e;
+  margin-bottom: 48px;
+}
+.memorial-focus .shrine-chambers,
+.memorial-focus .shrine-chapters {
+  display: none;
+}
+.memorial-focus.shrine-expanded .shrine-stage {
+  height: calc(100dvh - 190px);
+  min-height: 400px;
+}
+.memorial-focus .shrine-stage-controls button.shrine-memorial-return {
+  width: auto !important;
+  padding: 0 18px !important;
+  gap: 9px !important;
+  font-size: 14px;
+}
+.memorial-focus .shrine-curator {
+  min-height: 0;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+.memorial-focus .shrine-curator-mark {
+  display: none;
+}
+@media (max-width: 600px) {
+  .memorial-focus.shrine-expanded .shrine-stage {
+    height: calc(100dvh - 230px);
+    min-height: 360px;
+  }
+  .memorial-focus .shrine-curator > a {
+    margin-left: 0;
+  }
+}
+.shrine-stage.shrine-throne-view {
+  background: #19233b;
+}
+.shrine-throne-view .shrine-canvas,
+.shrine-throne-view .shrine-vignette {
+  bottom: 64px;
+}
+.shrine-throne-view .shrine-stage-controls {
+  bottom: 6px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  border: 0;
+  background: transparent;
+}
+.shrine-throne-view .shrine-scene-label {
+  display: none;
+}
+.shrine-stage-controls button.shrine-throne-button {
+  width: auto !important;
+  padding: 0 12px !important;
+  gap: 7px !important;
+  min-width: 44px;
+}
+.shrine-throne-button span {
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .shrine-throne-button span {
+    display: none;
+  }
+  .shrine-stage-controls button.shrine-throne-button {
+    padding: 0 !important;
+    width: 34px !important;
+    min-width: 34px;
+  }
+}
+.shrine-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin: 0 0 24px;
+}
+.shrine-title-row .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+.shrine-title-row h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 3.4vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.shrine-title-row h2 span {
+  color: var(--terracotta);
+}
+.shrine-mode-controls {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.shrine-mode-controls button {
+  height: 44px !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  padding: 0 13px !important;
+}
+.shrine-mode-controls button:last-child {
+  width: 44px;
+  padding: 0 !important;
+}
+.shrine-stage {
+  height: clamp(480px, 62vh, 760px);
+  position: relative;
+  border: 1px solid #7d7554;
+  border-radius: 120px 120px 8px 8px;
+  overflow: hidden;
+  background: #17372e;
+  box-shadow: 0 25px 60px #46362014;
+  isolation: isolate;
+}
+.shrine-canvas {
+  position: absolute;
+  inset: 0;
+}
+.shrine-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+.shrine-canvas canvas:active {
+  cursor: grabbing;
+}
+.shrine-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    #11251e40,
+    transparent 20%,
+    transparent 75%,
+    #102b2570
+  );
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 90px #112d231a;
+}
+.shrine-scene-label {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #fff1d6;
+  text-shadow: 0 1px 5px #000;
+  background: #173a2cbf;
+  padding: 9px 17px;
+  border: 1px solid #d9b96f55;
+  border-radius: 30px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.shrine-gold-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--shrine-gold);
+  box-shadow: 0 0 11px #d9b96f;
+}
+.shrine-guide {
+  position: absolute;
+  left: 23px;
+  bottom: 27px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #f2ddae;
+  font-size: 12px;
+  pointer-events: none;
+  background: #15352bc9;
+  border-radius: 5px;
+  padding: 10px 13px;
+}
+.shrine-stage-controls {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  background: #15352bed;
+  border: 1px solid #d1b67466;
+  border-radius: 30px;
+  padding: 4px 7px;
+  color: #fff0d0;
+  gap: 8px;
+}
+.shrine-stage-controls button {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50%;
+  color: #fff0d0 !important;
+}
+.shrine-stage-controls button:hover {
+  background: #d1b67426 !important;
+}
+.shrine-stage-controls > span {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  min-width: 62px;
+  text-align: center;
+}
+.shrine-stage-controls .shrine-control-divider {
+  height: 17px;
+  width: 1px;
+  min-width: 1px;
+  background: #d1b67455;
+}
+.shrine-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  background: #173a2adb;
+  color: #fff2d5;
+  font-family: var(--serif);
+  font-size: 24px;
+  z-index: 2;
+}
+.shrine-spinner {
+  animation: shrine-spin 2s linear infinite;
+  color: #dbb76b;
+}
+.shrine-chapters {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr 1fr;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  margin: 0 13px;
+  background: var(--card);
+}
+.shrine-chapters button {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--border);
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted-foreground);
+  text-align: left;
+  position: relative;
+}
+.shrine-chapters button:last-child {
+  border-right: 0;
+}
+.shrine-chapters button.active {
+  color: var(--teal);
+  background: #8fa58713;
+}
+.shrine-chapters button.active:after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  height: 3px;
+  background: var(--terracotta);
+}
+.shrine-chapters button > svg {
+  flex-shrink: 0;
+}
+.shrine-chapters button > svg:last-child {
+  margin-left: auto;
+  opacity: 0.5;
+}
+.shrine-chapters button span:not(.shrine-roman) {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.3;
+}
+.shrine-chapters button small {
+  display: block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted-foreground);
+  margin-bottom: 6px;
+}
+.shrine-roman {
+  font-family: var(--serif);
+  font-size: 32px;
+  color: var(--terracotta);
+}
+.shrine-curator {
+  display: flex;
+  align-items: flex-start;
+  gap: 23px;
+  padding: 30px 12px 0;
+  min-height: 150px;
+}
+.shrine-curator-mark {
+  font-family: var(--serif);
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--terracotta);
+  min-width: 40px;
+}
+.shrine-curator h2 {
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 0 0 9px;
+}
+.shrine-curator p {
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0;
+  color: var(--muted-foreground);
+}
+.shrine-curator small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-top: 12px;
+}
+.shrine-curator > a {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: var(--teal);
+  flex-shrink: 0;
+  padding-top: 6px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.shrine-fiction-note {
+  margin-left: auto;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  color: var(--muted-foreground);
+  text-align: right;
+  padding-top: 5px;
+}
+.shrine-reading {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  height: 100%;
+  align-items: center;
+  color: #fff2d5;
+  gap: 30px;
+  padding: 35px 40px 85px;
+  background: linear-gradient(125deg, #203f32, #11291f);
+  overflow-y: auto;
+}
+.shrine-reading > img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #ba995b;
+  box-shadow: 0 10px 45px #0003;
+}
+.shrine-reading h2 {
+  font-family: var(--serif);
+  font-size: 35px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+.shrine-reading .eyebrow {
+  color: #c6ab72;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.shrine-reading blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.3;
+  color: #eccb87;
+  margin: 0 0 20px;
+}
+.shrine-reading p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #d9dfc8;
+}
+.shrine-reading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 1px solid #cdb881;
+  color: #f5d693;
+  font-size: 14px;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+.shrine-fallback-note {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  border-top: 1px solid var(--border);
+  padding-top: 15px;
+}
+.shrine-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  padding: 20px 30px;
+  background: var(--background);
+  overflow: auto;
+  margin: 0;
+}
+.shrine-expanded .shrine-stage {
+  height: calc(100dvh - 225px);
+  min-height: 400px;
+}
+.shrine-expanded .shrine-curator {
+  display: none;
+}
+.shrine-expanded .shrine-title-row {
+  margin-bottom: 16px;
+}
+.shrine-expanded .shrine-title-row h2 {
+  font-size: 36px;
+}
+.shrine-expanded .shrine-title-row .eyebrow {
+  display: none;
+}
+@keyframes shrine-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 1000px) {
+  .shrine-title-row {
+    align-items: flex-start;
+  }
+  .shrine-title-row h2 {
+    font-size: 39px;
+  }
+  .shrine-chapters button {
+    padding: 18px 13px;
+    gap: 10px;
+  }
+  .shrine-chapters button span:not(.shrine-roman) {
+    font-size: 19px;
+  }
+  .shrine-chapters button > svg:last-child {
+    display: none;
+  }
+  .shrine-fiction-note {
+    display: none;
+  }
+  .shrine-guide {
+    bottom: 88px;
+    font-size: 12px;
+    left: 18px;
+    padding: 8px 10px;
+  }
+  .shrine-stage-controls {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  .shrine-reading {
+    padding: 35px 30px 85px;
+    gap: 22px;
+  }
+  .shrine-reading blockquote {
+    font-size: 23px;
+  }
+  .shrine-curator {
+    flex-wrap: wrap;
+  }
+  .shrine-curator > a {
+    margin-left: 63px;
+  }
+}
+@media (max-width: 600px) {
+  .shrine-title-row {
+    display: block;
+    margin-bottom: 18px;
+  }
+  .shrine-title-row h2 {
+    font-size: 37px;
+    max-width: 310px;
+  }
+  .shrine-title-row .eyebrow {
+    font-size: 12px;
+  }
+  .shrine-mode-controls {
+    margin-top: 17px;
+  }
+  .shrine-mode-controls button {
+    font-size: 14px !important;
+  }
+  .shrine-stage {
+    height: 530px;
+    border-radius: 65px 65px 6px 6px;
+  }
+  .shrine-scene-label {
+    font-size: 10px;
+    top: 24px;
+    max-width: 90%;
+    letter-spacing: 0.03em;
+    padding: 8px 11px;
+    white-space: normal;
+    text-align: center;
+  }
+  .shrine-guide {
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 90%;
+    bottom: 85px;
+    font-size: 12px;
+    padding: 8px;
+  }
+  .shrine-guide svg {
+    width: 13px;
+    flex-shrink: 0;
+  }
+  .shrine-chapters {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 7px;
+  }
+  .shrine-chapters button {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .shrine-chapters button:nth-child(2) {
+    border-right: 0;
+  }
+  .shrine-chapters button:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+  .shrine-chapters button small {
+    font-size: 11px;
+  }
+  .shrine-chapters button span:not(.shrine-roman) {
+    font-size: 19px;
+  }
+  .shrine-roman {
+    font-size: 27px;
+  }
+  .shrine-chapters button.active:after {
+    left: 12px;
+    right: 12px;
+    height: 2px;
+  }
+  .shrine-curator {
+    gap: 15px;
+    padding: 25px 3px 0;
+  }
+  .shrine-curator-mark {
+    min-width: 27px;
+    font-size: 29px;
+  }
+  .shrine-curator > div {
+    flex: 1;
+    min-width: 210px;
+  }
+  .shrine-curator h2 {
+    font-size: 24px;
+  }
+  .shrine-curator > a {
+    margin: 0 0 0 42px;
+    font-size: 14px;
+  }
+  .shrine-reading {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px 22px 90px;
+    overflow-y: auto;
+    align-items: stretch;
+  }
+  .shrine-reading > img {
+    max-height: 190px;
+    object-fit: contain;
+    border: 0;
+  }
+  .shrine-reading h2 {
+    font-size: 25px;
+  }
+  .shrine-reading blockquote {
+    font-size: 23px;
+    margin-bottom: 12px;
+  }
+  .shrine-expanded {
+    padding: 18px 15px;
+  }
+  .shrine-expanded .shrine-title-row h2 {
+    font-size: 28px;
+    max-width: none;
+  }
+  .shrine-expanded .shrine-stage {
+    height: calc(100dvh - 300px);
+    min-height: 300px;
+  }
+  .shrine-expanded .shrine-mode-controls {
+    margin-top: 12px;
+  }
+  .shrine-expanded .shrine-chapters button {
+    padding: 13px 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shrine-spinner {
+    animation: none;
+  }
+}
+
+/* The expanded temple has three chambers, with two murals in each. */
+.shrine-mode-controls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.shrine-mode-controls button[aria-pressed='true'] {
+  background: var(--teal) !important;
+  color: var(--background) !important;
+}
+.shrine-chambers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 13px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 0;
+}
+.shrine-chambers button {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  border: 0;
+  border-right: 1px solid var(--border);
+  padding: 18px 22px;
+  text-align: left;
+  background: transparent;
+  color: var(--muted-foreground);
+}
+.shrine-chambers button:last-child {
+  border-right: 0;
+}
+.shrine-chambers button.active {
+  background: #b5925513;
+  color: var(--teal);
+}
+.shrine-chambers button > span:first-child {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  color: var(--terracotta);
+}
+.shrine-chambers button > span:last-child {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.2;
+}
+.shrine-chambers small {
+  display: block;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin-top: 7px;
+  line-height: 1.4;
+}
+.shrine-chapters {
+  grid-template-columns: 0.8fr 1fr 1fr;
+}
+.shrine-chapters button:nth-child(n) {
+  border-bottom: 0;
+}
+.shrine-chapters button small {
+  font-size: 11px;
+}
+.shrine-chapters button span:not(.shrine-roman) {
+  font-size: 20px;
+}
+.shrine-chapters button {
+  padding: 17px 20px;
+}
+.shrine-expanded .shrine-stage {
+  height: calc(100dvh - 295px);
+  min-height: 380px;
+}
+.shrine-expanded .shrine-curator {
+  display: flex;
+}
+.shrine-expanded .shrine-title-row h2 {
+  font-size: 32px;
+}
+.shrine-walk-controls {
+  position: absolute;
+  bottom: 22px;
+  left: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 42px);
+  grid-template-rows: repeat(2, 40px);
+  gap: 3px;
+  padding: 7px;
+  border: 1px solid #d1b67466;
+  border-radius: 12px;
+  background: #15352bed;
+  color: #fff0d0;
+}
+.shrine-walk-controls button {
+  width: 42px !important;
+  height: 40px !important;
+  border-radius: 6px;
+  color: #fff0d0 !important;
+}
+.shrine-walk-controls button:first-child {
+  grid-column: 2;
+}
+.shrine-walk-controls button:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.shrine-walk-controls button:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+.shrine-walk-controls button:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+.shrine-walk-controls button:hover {
+  background: #d1b67433 !important;
+}
+.shrine-guide {
+  bottom: 132px;
+}
+.mural-explanation {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+.mural-explanation > span {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  color: var(--terracotta);
+  letter-spacing: 0.07em;
+}
+.mural-explanation p {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.shrine-reading .mural-explanation {
+  border-color: #526956;
+}
+.shrine-reading .mural-explanation > span {
+  color: #d5b879;
+}
+.shrine-reading .shrine-reading-credit {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b4c2a4;
+  display: block;
+  margin: 17px 0 0;
+}
+.shrine-reading {
+  align-items: start;
+  padding-top: 35px;
+}
+.shrine-reading > img {
+  position: sticky;
+  top: 0;
+}
+.shrine-situation {
+  margin: 30px 12px 5px 75px;
+  padding: 22px 26px;
+  border-left: 2px solid var(--terracotta);
+  background: #bfa77510;
+  max-width: 780px;
+}
+.shrine-situation .eyebrow {
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+.shrine-situation h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 0 0 13px;
+}
+.shrine-situation p {
+  font-size: 15px;
+  color: var(--muted-foreground);
+  line-height: 1.8;
+}
+.shrine-situation blockquote {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--teal);
+  margin: 10px 0;
+}
+.shrine-situation small {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+@media (max-width: 1000px) {
+  .shrine-title-row {
+    align-items: center;
+  }
+  .shrine-title-row h2 {
+    font-size: 35px;
+  }
+  .shrine-chambers button {
+    padding: 16px 13px;
+    gap: 10px;
+  }
+  .shrine-chambers button > span:last-child {
+    font-size: 19px;
+  }
+  .shrine-chambers small {
+    font-size: 11px;
+  }
+  .shrine-chapters button {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+  .shrine-chapters button span:not(.shrine-roman) {
+    font-size: 19px;
+  }
+  .shrine-expanded .shrine-stage {
+    height: calc(100dvh - 310px);
+  }
+  .shrine-stage-controls {
+    right: 20px;
+    left: auto;
+    transform: none;
+  }
+  .shrine-guide {
+    left: 20px;
+    bottom: 130px;
+    max-width: 90%;
+  }
+  .shrine-walk-controls {
+    left: 20px;
+  }
+  .shrine-mode-controls button {
+    font-size: 12px !important;
+    padding: 0 10px !important;
+  }
+}
+@media (max-width: 600px) {
+  .shrine-mode-controls {
+    justify-content: flex-start;
+  }
+  .shrine-title-row h2 {
+    font-size: 36px;
+  }
+  .shrine-mode-controls button {
+    font-size: 12px !important;
+    padding: 0 10px !important;
+  }
+  .shrine-stage {
+    height: 530px;
+  }
+  .shrine-chambers {
+    margin: 0 7px;
+  }
+  .shrine-chambers button {
+    padding: 14px 10px;
+    display: block;
+  }
+  .shrine-chambers button > span:first-child {
+    font-size: 10px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .shrine-chambers button > span:last-child {
+    font-size: 17px;
+  }
+  .shrine-chambers small {
+    display: none;
+  }
+  .shrine-chapters {
+    grid-template-columns: 0.7fr 1fr 1fr;
+  }
+  .shrine-chapters button {
+    padding: 13px 10px;
+    display: block;
+  }
+  .shrine-chapters button > svg {
+    display: none;
+  }
+  .shrine-roman {
+    font-size: 22px;
+  }
+  .shrine-chapters button small {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  .shrine-chapters button span:not(.shrine-roman) {
+    font-size: 16px;
+  }
+  .shrine-chapters button:nth-child(2) {
+    border-right: 1px solid var(--border);
+  }
+  .shrine-walk-controls {
+    grid-template-columns: repeat(3, 36px);
+    grid-template-rows: repeat(2, 36px);
+    left: 12px;
+    bottom: 18px;
+    padding: 5px;
+  }
+  .shrine-walk-controls button {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .shrine-stage-controls {
+    right: 12px;
+    bottom: 18px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .shrine-stage-controls button {
+    width: 34px !important;
+    height: 40px !important;
+  }
+  .shrine-stage-controls > span {
+    font-size: 10px;
+    min-width: 45px;
+  }
+  .shrine-stage-controls .shrine-control-divider {
+    display: none;
+  }
+  .shrine-guide {
+    left: 15px;
+    transform: none;
+    font-size: 11px;
+    bottom: 121px;
+    max-width: calc(100% - 30px);
+    width: auto;
+  }
+  .shrine-reading > img {
+    position: static;
+  }
+  .shrine-situation {
+    margin: 24px 3px 0 42px;
+    padding: 15px 17px;
+  }
+  .shrine-situation h3 {
+    font-size: 24px;
+  }
+  .shrine-situation p {
+    font-size: 14px;
+  }
+  .shrine-expanded .shrine-title-row h2 {
+    font-size: 28px;
+  }
+  .shrine-expanded .shrine-stage {
+    height: calc(100dvh - 340px);
+    min-height: 330px;
+  }
+}
