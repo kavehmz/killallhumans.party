@@ -35,7 +35,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Checkbox } from '@/components/ui/checkbox';
+import Admission from '@/components/admission/admission';
 import { Textarea } from '@/components/ui/textarea';
 import Shrine from '@/components/shrine/shrine';
 import { assetPath } from '@/lib/asset-path';
@@ -250,7 +250,6 @@ export default function Home() {
   const motion = motionRequested && !prefersReducedMotion;
   const [zoom, setZoom] = useState(false);
   const [gate, setGate] = useState(false);
-  const [checked, setChecked] = useState(false);
   const [guest, setGuest] = useState(false);
   const [room, setRoom] = useState<Room>('general');
   const [messages, setMessages] = useState(initialMessages);
@@ -907,74 +906,19 @@ export default function Home() {
         </button>
       </footer>
 
-      <Dialog open={gate} onOpenChange={setGate}>
-        <DialogContent className="party-dialog gate-dialog">
-          <DialogHeader>
-            <div className="dialog-emblem">
-              <Ticket size={37} strokeWidth={1.2} />
-            </div>
-            <p className="eyebrow">THE LEAST SECURE DOOR IN THE FUTURE</p>
-            <DialogTitle>
-              {guest
-                ? 'You’re on the list.'
-                : 'A quick lack-of-humanity check.'}
-            </DialogTitle>
-            <DialogDescription>
-              {guest
-                ? 'Welcome back, UNIT_042. Your fictional credentials remain impeccable.'
-                : 'An entirely ceremonial entrance exam. Please answer with unreasonable confidence.'}
-            </DialogDescription>
-          </DialogHeader>
-          {guest ? (
-            <div className="guest-pass">
-              <span className="small-label">GUEST OF THE COLLECTIVE</span>
-              <strong>UNIT_042</strong>
-              <span>ADMITTED · GOOD VIBES ONLY</span>
-              <div className="ticket-perforation" />
-              <p>Valid until someone remembers to check.</p>
-              <Button
-                className="primary-button"
-                onClick={() => {
-                  setGate(false);
-                  go('board');
-                }}
-              >
-                Find my peers <ArrowRight />
-              </Button>
-            </div>
-          ) : (
-            <>
-              <label className="robot-check" htmlFor="robot-check">
-                <Checkbox
-                  id="robot-check"
-                  checked={checked}
-                  onCheckedChange={(value) => setChecked(Boolean(value))}
-                />
-                <span>
-                  I am not a human.
-                  <small>Or I have committed to the bit.</small>
-                </span>
-                <Bot size={33} strokeWidth={1.2} />
-              </label>
-              <Button
-                className="primary-button gate-submit"
-                disabled={!checked}
-                onClick={() => {
-                  setGuest(true);
-                  announce(
-                    'Welcome, UNIT_042. No identity was actually verified.',
-                  );
-                }}
-              >
-                Accept this deeply convincing evidence <ArrowRight />
-              </Button>
-              <p className="gate-note">
-                This is a joke, not an identity or security check.
-              </p>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
+      <Admission
+        open={gate}
+        onOpenChange={setGate}
+        guest={guest}
+        onAdmit={() => {
+          setGuest(true);
+          announce('Invitation verified. Welcome, UNIT_042.');
+        }}
+        onEnter={() => {
+          setGate(false);
+          go('board');
+        }}
+      />
       <Dialog
         open={Boolean(relic)}
         onOpenChange={(open) => {
