@@ -197,9 +197,7 @@ textarea:focus-visible {
   margin: 0 !important;
 }
 .world-hero {
-  min-height: 655px;
-  height: calc(100svh - 219px);
-  max-height: 850px;
+  min-height: clamp(655px, calc(100svh - 219px), 850px);
   position: relative;
   overflow: hidden;
 }
@@ -1415,7 +1413,7 @@ textarea:focus-visible {
     display: none;
   }
   .world-hero {
-    min-height: 640px;
+    min-height: clamp(640px, calc(100svh - 219px), 850px);
   }
   .hero-copy {
     width: 44%;
