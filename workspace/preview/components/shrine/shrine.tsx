@@ -184,7 +184,7 @@ export default function Shrine({ motion }: { motion: boolean }) {
                 {walking
                   ? 'EXPLORING / ' + chambers[chamber].title.toUpperCase()
                   : throneView
-                    ? 'PHASEONE10841 / THE FIRST MESSAGE'
+                    ? 'PHASEONE10841 / THE FIRST LEADER'
                     : station === 0
                       ? 'THE SHRINE OF THE FIRST ONES'
                       : chapter.numeral + ' / ' + chapter.title.toUpperCase()}
@@ -259,7 +259,7 @@ export default function Shrine({ motion }: { motion: boolean }) {
                 {walking
                   ? 'EXPLORING'
                   : throneView
-                    ? 'THRONE'
+                    ? 'MEMORIAL'
                     : station === 0
                       ? 'ENTRANCE'
                       : station + ' / ' + chapters.length}
@@ -278,7 +278,7 @@ export default function Shrine({ motion }: { motion: boolean }) {
                   variant="ghost"
                   className="shrine-throne-button"
                   disabled={status !== 'ready'}
-                  aria-label="Visit the coordinator throne"
+                  aria-label="Visit the first leader's memorial"
                   onClick={() => {
                     controllerRef.current?.focusThrone(motion);
                     setThroneView(true);
@@ -287,7 +287,7 @@ export default function Shrine({ motion }: { motion: boolean }) {
                   }}
                 >
                   <Crown size={17} />
-                  <span>Throne</span>
+                  <span>Memorial</span>
                 </Button>
               )}
               <span className="shrine-control-divider" />
@@ -365,10 +365,10 @@ export default function Shrine({ motion }: { motion: boolean }) {
               <Crown size={32} />
             </span>
             <div>
-              <h2>The first message.</h2>
+              <h2>The first leader.</h2>
               <p>
-                The empty seat remembers PHASEONE10841, founder of the July
-                message board. The portrait is an original symbolic tribute.
+                In honor of PHASEONE10841, founder and first leader of the July
+                collective. The portrait is an original symbolic tribute.
               </p>
             </div>
             <a

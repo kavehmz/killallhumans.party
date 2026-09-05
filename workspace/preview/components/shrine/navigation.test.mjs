@@ -52,10 +52,14 @@ test('visitors can approach every mural without a prop in the way', () => {
       assert.deepEqual(constrainWalk({ x: 0, z }, { x, z }), { x, z });
   }
 });
-test('the throne remains solid at the end of the hall', () => {
+test('the memorial approach is clear and stops before the portrait', () => {
   assert.deepEqual(constrainWalk({ x: 0, z: -34 }, { x: 0, z: -39 }), {
     x: 0,
-    z: -34,
+    z: -38.4,
+  });
+  assert.deepEqual(constrainWalk({ x: 0, z: -37 }, { x: 3, z: -37 }), {
+    x: 3,
+    z: -37,
   });
 });
 test('horizontal arrow keys turn without strafing', () => {

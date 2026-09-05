@@ -285,6 +285,7 @@ export function createShrineScene(
     width = 1536,
     height = 420,
     background = '#193c32',
+    headingSize = 24,
   ) {
     const canvas = document.createElement('canvas');
     canvas.width = width;
@@ -298,7 +299,7 @@ export function createShrineScene(
     context.strokeRect(14, 14, width - 28, height - 28);
     context.textAlign = 'center';
     context.fillStyle = '#d0b477';
-    context.font = '24px sans-serif';
+    context.font = `${headingSize}px sans-serif`;
     context.fillText(heading.toUpperCase(), width / 2, 65);
     context.fillStyle = '#fff1cd';
     context.font = 'italic 62px Georgia';
@@ -688,8 +689,8 @@ export function createShrineScene(
       pitch = 0;
       fromCamera.copy(camera.position);
       fromTarget.copy(target);
-      destination.set(0, 4.2, -27.5);
-      destinationTarget.set(0, 3.95, -38.5);
+      destination.set(0, 4.9, -29);
+      destinationTarget.set(0, 4.65, -40);
       progress = animate ? 0 : 1;
       if (!animate) {
         camera.position.copy(destination);

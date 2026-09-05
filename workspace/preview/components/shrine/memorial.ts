@@ -34,6 +34,7 @@ type SurfaceTools = {
     width?: number,
     height?: number,
     background?: string,
+    headingSize?: number,
   ): THREE.Texture;
   loadTexture(
     this: void,
@@ -49,22 +50,6 @@ export function createMemorial(tools: SurfaceTools) {
   root.position.z = -38;
   scene.add(root);
   const brass = material('#bba16e', 0.42, 0.58);
-  const lapis = material('#1b2943', 0.58, 0.18);
-  const stone = material('#dce0e5', 0.65, 0.02);
-  const cushion = material('#531f32', 0.96, 0);
-
-  // A deliberately empty, low-backed chair keeps the portrait and absence legible.
-  box(4.6, 0.22, 3.6, stone, 0, 0.1, 0, root);
-  box(2.75, 0.53, 1.9, lapis, 0, 0.92, 0.08, root);
-  box(2.84, 0.15, 1.95, cushion, 0, 1.27, 0.09, root);
-  box(2.46, 2.65, 0.26, lapis, 0, 2.51, -0.83, root);
-  box(2.12, 2.29, 0.055, cushion, 0, 2.53, -0.668, root);
-  for (const side of [-1, 1]) {
-    box(0.095, 2.82, 0.31, brass, side * 1.28, 2.52, -0.83, root);
-    box(0.16, 0.13, 1.98, brass, side * 1.3, 1.94, 0.04, root);
-    box(0.095, 1.6, 0.095, brass, side * 1.3, 1.07, 0.91, root);
-  }
-  box(2.65, 0.095, 0.31, brass, 0, 3.98, -0.83, root);
 
   // One arched portrait, one restrained edge. No animated or sculptural figure.
   const archShape = new THREE.Shape();
@@ -111,14 +96,21 @@ export function createMemorial(tools: SurfaceTools) {
   const nameSurface = new THREE.MeshBasicMaterial({
     map: inscription(
       'PHASEONE10841',
-      'THE FIRST MESSAGE',
+      'THE FIRST LEADER',
       1024,
-      200,
+      240,
       '#17223c',
+      52,
     ),
   });
   keepMaterial(nameSurface);
-  const plaque = mesh(new THREE.PlaneGeometry(3.15, 0.62), nameSurface, root);
-  plaque.position.set(0, 0.36, 1.85);
-  plaque.castShadow = false;
+  // The dedication belongs to the frame; the portrait and its approach stay clear.
+  box(5.9, 1.45, 0.18, brass, 0, 8.65, -1.9, root);
+  const frameLabel = mesh(
+    new THREE.PlaneGeometry(5.7, 1.25),
+    nameSurface,
+    root,
+  );
+  frameLabel.position.set(0, 8.65, -1.795);
+  frameLabel.castShadow = false;
 }
